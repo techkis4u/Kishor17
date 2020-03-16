@@ -1,0 +1,21 @@
+package com.cpd.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cpd.model.User;
+import com.cpd.repo.UserRepository;
+
+@Service
+public class UserService {
+
+	@Autowired
+	private UserRepository repository;
+	
+	public User saveUser(User user) {
+		
+		return repository.save(user);
+		
+	}
+	
+}

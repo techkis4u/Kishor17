@@ -1,0 +1,215 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page isELIgnored="false"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$("#formCity").change(function() {
+			val
+			city = $("formCity").val();
+			$("#source").val(city);
+		});
+		$("#toCity").change(function() {
+			var toCity = $("#toCity").val();
+
+			val
+			formCity = $("#formCity").val();
+
+			$("#destination").val(formCity);
+			if (formCity == toCity) {
+				alert("From city and To city should not be same");
+				$("#destination").val("");
+				$("#toCity").val(0);
+				return;
+			}
+			$("#destination").val(toCity);
+		});
+	});
+
+	function getBookingPrice() {
+		var src = $("#source").val();
+		var dest = $("#destination").val();
+
+		var search = {};
+		search["source"] = src;
+		search["destination"] = dest;
+
+		$.ajax({
+			type : "POST",
+			contentType : "application/json",
+			url : "/api/find-price",
+			data : JSON.stringify(search),
+			dataType : 'json',
+			cache : false,
+			timeout : 600000,
+			success : function(result) {
+				populatePrice(result);
+			},
+			error : function(e) {
+
+			}
+		});
+	};
+
+	function populatePrice(result) {
+
+		$("#price").val(result.price);
+	}
+</script>
+
+</head>
+<body bgcolor="orange">
+	<h1 align="center">BOOKING</h1>
+	<form:form modelAttribute="bookingCommand">
+		<div align="center">
+			<table style="background-color: powderblue">
+				<tr>
+					<td>
+
+						<div>
+							<span style="background-color: red"> <form:errors path="*" />
+							</span>
+						</div>
+						<table>
+							<tr>
+								<td height="30px">
+									<div
+										style="width: 250px; height: 70%; background-color: red; border-radius: 7px;">CUSTOMERDETAILS</div>
+
+								</td>
+							</tr>
+
+							<tr>
+								<td>Name:</td>
+								<td><form:input path="name" /></td>
+							</tr>
+							<tr>
+								<td>PHONE:</td>
+								<td><form:input path="phone" /></td>
+							</tr>
+							<tr>
+								<td>EMAIL:</td>
+								<td><form:input path="email" /></td>
+							</tr>
+							<tr>
+								<td height="30px">
+									<div align="center"
+										style="width: 250px; height: 70%; background-color: yellow; border-radius: 7px;">Form</div>
+								</td>
+								<td height="30px">
+									<div align="center"
+										style="width: 250px; height: 70%; background-color: yellow; border-radius: 7px;">To</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table>
+										<tr>
+											<td>ADDRESS_LINR1:</td>
+											<td><form:input path="formAddress_line1" /></td>
+										</tr>
+										<tr>
+											<td>ADDRESS_LINR2:</td>
+											<td><form:input path="formAddress_line2" /></td>
+										</tr>
+										<tr>
+											<td>CITY:</td>
+											<td colspan="2"><form:select path="formCity"
+													id="formCity">
+													<form:option value="">select</form:option>
+													<form:option value="bhubaneswar">BHUBANESWAR</form:option>
+													<form:option value="bangalore">BANGALORE</form:option>
+													<form:option value="chennai">CHENNAI</form:option>
+													<form:option value="hyderabad">hyderabad</form:option>
+												</form:select></td>
+										</tr>
+										<tr>
+											<td>ZIP:</td>
+											<td><form:input path="formZip" /></td>
+										</tr>
+									</table>
+								</td>
+								<td>
+									<table>
+										<tr>
+											<td>ADDRESS_LINR1:</td>
+											<td><form:input path="toAddress_line1" /></td>
+										</tr>
+										<tr>
+											<td>ADDRESS_LINR2:</td>
+											<td><form:input path="toAddress_line2" /></td>
+										</tr>
+										<tr>
+											<td>CITY:</td>
+											<td colspan="2"><form:select path="toCity" id="toCity">
+													<form:option value="">select</form:option>
+													<form:option value="bhubaneswar">BHUBANESWAR</form:option>
+													<form:option value="bangalore">BANGALORE</form:option>
+													<form:option value="chennai">CHENNAI</form:option>
+													<form:option value="hyderabad">hyderabad</form:option>
+												</form:select></td>
+										</tr>
+										<tr>
+											<td>ZIP:</td>
+											<td><form:input path="toZip" /></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>VAS_PROD_COD:</td>
+								<td><form:select path="vas_prod_cod">
+										<form:option value="">select</form:option>
+										<form:option value="cod">cod</form:option>
+										<form:option value="fod">fod</form:option>
+										<form:option value="pob">pob</form:option>
+									</form:select></td>
+							</tr>
+							<tr>
+								<td>SOURCE:</td>
+								<td><form:input path="source" id="source" /></td>
+							</tr>
+							<tr>
+								<td>DESTINATION:</td>
+								<td><form:input path="destination" id="destination" /></td>
+							</tr>
+							<tr>
+								<td>BOOKING_PRICE:</td>
+								<td><form:input path="booking_price" /></td>
+							</tr>
+							<tr>
+								<td>ITEM_WEIGHT:</td>
+								<td><form:input path="item_weight" /></td>
+							</tr>
+							<tr>
+								<td>BOOKING_DATE_TIME:</td>
+								<td><form:input path="booking_date_time" type="date" /></td>
+							</tr>
+							<tr>
+								<td>BOOKING_PARCEL_TYPE:</td>
+								<td><form:input path="booking_parcel_type" /></td>
+							</tr>
+							<tr>
+								<td>QUANTITY:</td>
+								<td><form:input path="quantity" /></td>
+							</tr>
+							<tr>
+								<td><input type="submit" value="Booking"></td>
+								<td><input type="reset" value="reset"></td>
+							</tr>
+						</table>
+
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form:form>
+</body>
+</html>

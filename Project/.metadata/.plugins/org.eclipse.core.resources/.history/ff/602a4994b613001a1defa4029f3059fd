@@ -1,0 +1,92 @@
+package com.cpd.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.cpd.command.LoginCommand;
+import com.cpd.command.RegistrationCommand;
+import com.cpd.deligate.DtdcRegistrationDeligate;
+import com.cpd.validator.LoginValidator;
+import com.cpd.validator.RegistrationValidator;
+
+@Controller
+public class DtdcRegistrationController {
+
+	@Autowired
+	private RegistrationValidator validator;
+	@Autowired
+	private LoginValidator LoginValidator;
+	@Autowired
+	private DtdcRegistrationDeligate dtdcRegistrationController;
+
+	@GetMapping("/dtdc-registration.htm")
+	public String goToRegistration() {
+
+		return "dtdc-registration";
+	}
+
+	@ModelAttribute("dtdcRegistration")
+	public RegistrationCommand emptyCommandObject() {
+
+		return new RegistrationCommand();
+	}
+
+	@PostMapping("/dtdc-registration.htm")
+	public String doRegister(@ModelAttribute("dtdcRegistration") RegistrationCommand command, BindingResult error) {
+
+		if (validator.supports(RegistrationCommand.class)) {
+
+			validator.validate(command, error);
+			if (error.hasErrors()) {
+
+				return "dtdc-registration";
+
+			}
+
+		}
+		dtdcRegistrationController.register(command);
+		return "registration-success";
+	}
+
+	@GetMapping("/dtdc-login.htm")
+	public String goToLogin() {
+
+		return "dtdc-login";
+	}
+
+	@ModelAttribute("dtdclogin")
+	public RegistrationCommand emptyLoginCommandObject() {
+
+		return new RegistrationCommand();
+	}
+
+	@PostMapping("/dtdc-login.htm")
+	public String doLogin(@ModelAttribute("dtdclogin") LoginCommand command, BindingResult error) {
+		System.out.println(command);
+		if (LoginValidator.supports(LoginCommand.class)) {
+
+			LoginValidator.validate(command, error);
+			
+			
+		}
+			if (error.hasErrors()) {
+				if (command.getUserType().contains("corporate")) {
+					return "corporate";
+				}
+				if (command.getUserType().contains("channel-pattner")) {
+					return "channel-pattner";
+				}
+				if (command.getUserType().contains("delivery-parttner")) {
+					return "delivery-parttner";
+				}
+				
+				return "dtdc-login";
+		}
+		return "registration-success";
+	}
+
+}

@@ -1,0 +1,43 @@
+package com.cpd.model;
+
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+
+@Entity
+@Table(name = "DTDC_USER")
+public class User {
+
+	@Id
+	@SequenceGenerator(name = "SEQ_GEN_U_C", sequenceName = "SEQ_N_T_DTDC_USER", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN_U_C")
+	@Column(name = "USER_ID")
+	private int userId;
+	private String name;
+	private String phone;
+	private String email;
+	private Date dob;
+
+	@OneToMany(mappedBy = "user")
+	private Set<Address> addresses;
+
+	@OneToOne(mappedBy = "user")
+	@Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+	private Login login;
+
+	@OneToMany(mappedBy = "user")
+	private Set<ShipmentBooking> shipmentBookings;
+
+	
+}

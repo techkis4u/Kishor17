@@ -1,0 +1,63 @@
+package com.cpd.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.cpd.command.LoginCommand;
+import com.cpd.validator.LoginValidator;
+
+@Controller
+public class LoginController {
+
+	@Autowired
+	private LoginValidator LoginValidator;
+	
+	@GetMapping("/dtdc-login.htm")
+	public String goToLogin() {
+
+		return "dtdc-login";
+	}
+
+	@ModelAttribute("loginCommand")
+	public LoginCommand emptyLoginCommandObject() {
+
+		return new LoginCommand();
+	}
+
+	@PostMapping("/dtdc-login.htm")
+	public String doLogin(HttpSession session,@ModelAttribute("loginCommand") LoginCommand command, BindingResult error) {
+		if (LoginValidator.supports(LoginCommand.class)) {
+
+			LoginValidator.validate(command, error);
+
+		}
+		if (error.hasErrors()) {
+
+			return "dtdc-login";
+		}
+		try {
+			
+			Integer userId=service.validateLogin(command);
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		if (command.getUserType().equals("corporate")) {
+			return "corporate";
+		}
+		if (command.getUserType().equals("channel-pattner")) {
+			return "channel-pattner";
+		}
+		if (command.getUserType().equals("delivery-parttner")) {
+			return "delivery-parttner";
+		}
+		return "registration-success";
+	}
+}

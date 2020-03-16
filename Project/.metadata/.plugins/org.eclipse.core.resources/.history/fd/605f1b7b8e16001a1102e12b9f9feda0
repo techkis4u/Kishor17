@@ -1,0 +1,124 @@
+package com.cpd.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "SHIPMING_ADDRESS")
+public class ShipmingAddress {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int s_a_id;
+	private String fromAddressLine1;
+	private String fromAddressLine2;
+	private String fromCity ;
+	private String fromState;
+	private String fromCountry;
+	private int fromZip ;
+	private String toAddressLine1;
+	private String toAddressLine2;
+	private String toCity ;
+	private String toState;
+	private String toCountry;
+	private int toZip ;
+	private String type;
+	public int getS_a_id() {
+		return s_a_id;
+	}
+	public void setS_a_id(int s_a_id) {
+		this.s_a_id = s_a_id;
+	}
+	public String getFromAddressLine1() {
+		return fromAddressLine1;
+	}
+	public void setFromAddressLine1(String fromAddressLine1) {
+		this.fromAddressLine1 = fromAddressLine1;
+	}
+	public String getFromAddressLine2() {
+		return fromAddressLine2;
+	}
+	public void setFromAddressLine2(String fromAddressLine2) {
+		this.fromAddressLine2 = fromAddressLine2;
+	}
+	public String getFromCity() {
+		return fromCity;
+	}
+	public void setFromCity(String fromCity) {
+		this.fromCity = fromCity;
+	}
+	public String getFromState() {
+		return fromState;
+	}
+	public void setFromState(String fromState) {
+		this.fromState = fromState;
+	}
+	public String getFromCountry() {
+		return fromCountry;
+	}
+	public void setFromCountry(String fromCountry) {
+		this.fromCountry = fromCountry;
+	}
+	public int getFromZip() {
+		return fromZip;
+	}
+	public void setFromZip(int fromZip) {
+		this.fromZip = fromZip;
+	}
+	public String getToAddressLine1() {
+		return toAddressLine1;
+	}
+	public void setToAddressLine1(String toAddressLine1) {
+		this.toAddressLine1 = toAddressLine1;
+	}
+	public String getToAddressLine2() {
+		return toAddressLine2;
+	}
+	public void setToAddressLine2(String toAddressLine2) {
+		this.toAddressLine2 = toAddressLine2;
+	}
+	public String getToCity() {
+		return toCity;
+	}
+	public void setToCity(String toCity) {
+		this.toCity = toCity;
+	}
+	public String getToState() {
+		return toState;
+	}
+	public void setToState(String toState) {
+		this.toState = toState;
+	}
+	public String getToCountry() {
+		return toCountry;
+	}
+	public void setToCountry(String toCountry) {
+		this.toCountry = toCountry;
+	}
+	public int getToZip() {
+		return toZip;
+	}
+	public void setToZip(int toZip) {
+		this.toZip = toZip;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	@Override
+	public String toString() {
+		return "ShipmingAddress [s_a_id=" + s_a_id + ", fromAddressLine1=" + fromAddressLine1 + ", fromAddressLine2="
+				+ fromAddressLine2 + ", fromCity=" + fromCity + ", fromState=" + fromState + ", fromCountry="
+				+ fromCountry + ", fromZip=" + fromZip + ", toAddressLine1=" + toAddressLine1 + ", toAddressLine2="
+				+ toAddressLine2 + ", toCity=" + toCity + ", toState=" + toState + ", toCountry=" + toCountry
+				+ ", toZip=" + toZip + ", type=" + type + "]";
+	}
+	
+	
+	
+}

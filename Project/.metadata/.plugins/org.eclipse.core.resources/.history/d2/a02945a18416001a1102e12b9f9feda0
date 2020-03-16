@@ -1,0 +1,96 @@
+package com.cpd.validator;
+
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+import com.cpd.command.ShipmentBookingCommand;
+
+@Component
+public class ShipmentBookingValidator implements Validator {
+
+	@Override
+	public boolean supports(Class<?> clazz) {
+		if (clazz.isAssignableFrom(ShipmentBookingCommand.class))
+			return true;
+		return false;
+	}
+
+	@Override
+	public void validate(Object target, Errors errors) {
+		ShipmentBookingCommand bookingCommand = (ShipmentBookingCommand) target;
+
+		if (bookingCommand.getName() == null || "".equals(bookingCommand.getName())
+				|| bookingCommand.getName().isEmpty()) {
+
+			errors.rejectValue("name", "shiping.name");
+		}
+		if (bookingCommand.getPhone() == null || "".equals(bookingCommand.getPhone())
+				|| bookingCommand.getPhone().isEmpty()) {
+
+			errors.rejectValue("phone", "shiping.phone");
+		}
+		if (!bookingCommand.getEmail().contains("@") && !bookingCommand.getEmail().contains(".com")) {
+			errors.rejectValue("email", "shiping.email");
+		}
+		if (bookingCommand.getFromAddressLine1() == null || "".equals(bookingCommand.getFromAddressLine1())
+				|| bookingCommand.getFromAddressLine1().isEmpty()) {
+
+			errors.rejectValue("formaddressLine1", "shiping.formaddressLine1");
+		}
+		if (bookingCommand.getFromAddressLine2() == null || "".equals(bookingCommand.getFromAddressLine2())
+				|| bookingCommand.getFromAddressLine2().isEmpty()) {
+
+			errors.rejectValue("formaddressLine2", "shiping.formaddressLine2");
+		}
+		if (bookingCommand.getFromCity() == null || "".equals(bookingCommand.getFromCity())
+				|| bookingCommand.getFromCity().isEmpty()) {
+
+			errors.rejectValue("getFromCity", "shiping.FromCity");
+		}
+		if (bookingCommand.getFromState() == null || "".equals(bookingCommand.getFromState())
+				|| bookingCommand.getFromState().isEmpty()) {
+
+			errors.rejectValue("FromState", "shiping.FromState");
+		}
+		if (bookingCommand.getFromCountry() == null || "".equals(bookingCommand.getFromCountry())
+				|| bookingCommand.getFromCountry().isEmpty()) {
+
+			errors.rejectValue("FromCountry", "shiping.FromCountry");
+		}
+		if(bookingCommand.getFromZip()<=100000 || bookingCommand.getFromZip()>999999 ) {
+			errors.rejectValue("formzip", "shiping.formzip");
+		}
+		
+		if (bookingCommand.getToAddressLine1()() == null || "".equals(bookingCommand.getToAddressLine1())
+				|| bookingCommand.getFromAddressLine1().isEmpty()) {
+
+			errors.rejectValue("toaddressLine1", "shiping.toaddressLine1");
+		}
+		if (bookingCommand.getToAddressLine2() == null || "".equals(bookingCommand.getToAddressLine2())
+				|| bookingCommand.getToAddressLine2().isEmpty()) {
+
+			errors.rejectValue("toaddressLine2", "shiping.toaddressLine2");
+		}
+		if (bookingCommand.getToCity() == null || "".equals(bookingCommand.getToCity())
+				|| bookingCommand.getToCity().isEmpty()) {
+
+			errors.rejectValue("tocity", "shiping.tocity");
+		}
+		if (bookingCommand.getToState() == null || "".equals(bookingCommand.getToState())
+				|| bookingCommand.getToState().isEmpty()) {
+
+			errors.rejectValue("toState", "shiping.toState");
+		}
+		if (bookingCommand.getToCountry() == null || "".equals(bookingCommand.getToCountry())
+				|| bookingCommand.getToCountry().isEmpty()) {
+
+			errors.rejectValue("toCountry", "shiping.toCountry");
+		}
+		if(bookingCommand.getToZip()<=100000 || bookingCommand.getToZip()>999999 ) {
+			errors.rejectValue("tozip", "shiping.tozip");
+		}
+
+	}
+
+}

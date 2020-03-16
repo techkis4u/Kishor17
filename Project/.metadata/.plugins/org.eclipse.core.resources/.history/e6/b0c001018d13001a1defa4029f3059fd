@@ -1,0 +1,47 @@
+package com.cpd.deligate;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.cpd.command.RegistrationCommand;
+import com.cpd.model.Address;
+import com.cpd.model.User;
+import com.cpd.service.UserService;
+
+@Component
+public class DtdcRegistrationDeligate {
+	@Autowired
+	private UserService userService;
+	
+	
+	public boolean register(RegistrationCommand command) {
+		User user=extractUserFromCommand(command);
+		
+		User saveuser=userService.saveUser(user);
+		System.out.println(saveuser);
+		return true;
+		
+	}
+	private User extractUserFromCommand(RegistrationCommand command) {
+		User user =new User();
+		user.setName(command.getName());
+		user.setPhone(command.getPhone());
+		user.setEmail(command.getEmail());
+		user.setDob(command.getDob());
+		System.out.println(user);
+		return user;
+		
+	}
+	private Address extractAddressFromCommand(RegistrationCommand command) {
+		Address address=new Address();
+		
+		address.setAddressLine1(command.getAddressLine1());
+		address.setAddressLine2(command.getAddressLine2());
+		address.setCity(command.getCity());
+		address.setState(command.getState());
+		address.setCountry(command.getCountry());
+		address.setZip(command.getZip());
+		return address;
+		
+	}
+}

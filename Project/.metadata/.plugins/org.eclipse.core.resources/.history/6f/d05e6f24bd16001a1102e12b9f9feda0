@@ -1,0 +1,76 @@
+package com.cpd.model;
+
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import com.cpd.customgenerator.ShipmentNumberCustomeKeyGenerator;
+
+@Entity
+@Table(name = "SHIPMENT_BOOKING11")
+public class ShipmentBooking {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "shipment_seq")
+	@GenericGenerator(name = "shipment_seq", strategy = "com.cpd.customgenerator.ShipmentNumberCustomeKeyGenerator", parameters = {
+			@Parameter(name = ShipmentNumberCustomeKeyGenerator.INCREMENT_PARAM, value = "1"),
+			@Parameter(name = ShipmentNumberCustomeKeyGenerator.VALUE_PREFIX_PARAMETER, value = "I"),
+			@Parameter(name = ShipmentNumberCustomeKeyGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d"),
+			@Parameter(name = "sequence_name", value = "shipment_sequence"),
+			@Parameter(name = "initial_value", value = "1"), })
+	
+	@Column(name = "CONSIGNMENT_NUMBER")
+	private String consignmentNumber;
+
+	@Column(name = "VAS_PROD_COD")
+	private String vasProdCod;
+
+	@Column(name = "BOOKING_PRICE")
+	private int bookingPrice;
+
+	@Column(name = "ITEM_WEIGHT")
+	private float itemWeight;
+	private String source;
+	private String destination;
+
+	@Column(name = "BOOKING_DATE_TIME")
+	private Date bookingDateTime;
+
+	@Column(name = "BOOKING_PARCEL_TYPE")
+	private String bookingParcelType;
+	private int quantity;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CHANNEL_PARTNER_ID")
+	private User user;
+
+	@OneToOne(mappedBy ="shipmentbooking")
+	@Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+	private ShipingCustmor shipmentCustmor;
+	
+	
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="BOOKING_ID")
+	 private Set<ShipingAddress> shipingAddresses;
+	 
+
+	
+	
+
+	
+}

@@ -1,0 +1,66 @@
+package com.cpd.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "SHIPING_CUSTMOR")
+public class ShipingCustmor {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int s_c_id;
+	private String name;
+	private String phone;
+	private String email;
+	
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private ShipmentBooking shipmentbooking;
+	public int getS_c_id() {
+		return s_c_id;
+	}
+	public void setS_c_id(int s_c_id) {
+		this.s_c_id = s_c_id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public ShipmentBooking getShipmentbooking() {
+		return shipmentbooking;
+	}
+	public void setShipmentbooking(ShipmentBooking shipmentbooking) {
+		this.shipmentbooking = shipmentbooking;
+	}
+	@Override
+	public String toString() {
+		return "ShipingCustmor [s_c_id=" + s_c_id + ", name=" + name + ", phone=" + phone + ", email=" + email
+				+ ", shipmentbooking=" + shipmentbooking + "]";
+	}
+	
+	/*
+	 * @OneToMany(mappedBy = "shipingCustmor") private Set<ShipingAddress>
+	 * addresses;
+	 */
+	
+	
+}

@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header style="background: #000; height: 100vh; background-size: cover; background-position: center center; position: relative;">
+		<div style="width: 1170px; margin: auto;">
+			<div class="logo">
+				<img alt="" src=".dtdc1.jpg">
+			</div>
+			<ul class="nav-area">
+				<li><a href="/dtdc-registration.htm"</a>sign-up</li>
+				<li><a href="/dtdc-login.htm"</a>sign-in</li>
+				<li><a href="#"</a>about</li>
+				<li><a href="#"</a>service</li>
+				<li><a href="#"</a>contact</li>
+			</ul>
+		</div>
+		<div class="welcome-text">
+			<h1>WELLCOME TO DTDC</h1>
+				<li><a href="#"</a>contact-us</li>
+		</div>
+	</header>
+	
+	
+</body>
+</html>
+
+

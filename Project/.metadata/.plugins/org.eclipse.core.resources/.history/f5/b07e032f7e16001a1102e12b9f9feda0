@@ -1,0 +1,155 @@
+package com.cpd.command;
+
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class ShipmentBookingCommand {
+	private String name;
+	private String phone;
+	private String email;
+	private String formAddress_line1;
+	private String formAddress_line2;
+	private String formCity ;
+	private int formZip ;
+	private String toAddress_line1;
+	private String toAddress_line2;
+	private String toCity ;
+	private int toZip ;
+	private String  vas_prod_cod;
+	private String  source;
+	private String  destination; 
+	private int booking_price ;
+	private float item_weight ;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date booking_date_time ; 
+	private String booking_parcel_type;
+	private int quantity ;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getFormAddress_line1() {
+		return formAddress_line1;
+	}
+	public void setFormAddress_line1(String formAddress_line1) {
+		this.formAddress_line1 = formAddress_line1;
+	}
+	public String getFormAddress_line2() {
+		return formAddress_line2;
+	}
+	public void setFormAddress_line2(String formAddress_line2) {
+		this.formAddress_line2 = formAddress_line2;
+	}
+	public String getFormCity() {
+		return formCity;
+	}
+	public void setFormCity(String formCity) {
+		this.formCity = formCity;
+	}
+	public int getFormZip() {
+		return formZip;
+	}
+	public void setFormZip(int formZip) {
+		this.formZip = formZip;
+	}
+	public String getToAddress_line1() {
+		return toAddress_line1;
+	}
+	public void setToAddress_line1(String toAddress_line1) {
+		this.toAddress_line1 = toAddress_line1;
+	}
+	public String getToAddress_line2() {
+		return toAddress_line2;
+	}
+	public void setToAddress_line2(String toAddress_line2) {
+		this.toAddress_line2 = toAddress_line2;
+	}
+	public String getToCity() {
+		return toCity;
+	}
+	public void setToCity(String toCity) {
+		this.toCity = toCity;
+	}
+	public int getToZip() {
+		return toZip;
+	}
+	public void setToZip(int toZip) {
+		this.toZip = toZip;
+	}
+	public String getVas_prod_cod() {
+		return vas_prod_cod;
+	}
+	public void setVas_prod_cod(String vas_prod_cod) {
+		this.vas_prod_cod = vas_prod_cod;
+	}
+	public String getSource() {
+		return source;
+	}
+	public void setSource(String source) {
+		this.source = source;
+	}
+	public String getDestination() {
+		return destination;
+	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+	public int getBooking_price() {
+		return booking_price;
+	}
+	public void setBooking_price(int booking_price) {
+		this.booking_price = booking_price;
+	}
+	public float getItem_weight() {
+		return item_weight;
+	}
+	public void setItem_weight(float item_weight) {
+		this.item_weight = item_weight;
+	}
+	public Date getBooking_date_time() {
+		return booking_date_time;
+	}
+	public void setBooking_date_time(Date booking_date_time) {
+		this.booking_date_time = booking_date_time;
+	}
+	public String getBooking_parcel_type() {
+		return booking_parcel_type;
+	}
+	public void setBooking_parcel_type(String booking_parcel_type) {
+		this.booking_parcel_type = booking_parcel_type;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	@Override
+	public String toString() {
+		return "ShipmentBookingCommand [name=" + name + ", phone=" + phone + ", email=" + email + ", formAddress_line1="
+				+ formAddress_line1 + ", formAddress_line2=" + formAddress_line2 + ", formCity=" + formCity
+				+ ", formZip=" + formZip + ", toAddress_line1=" + toAddress_line1 + ", toAddress_line2="
+				+ toAddress_line2 + ", toCity=" + toCity + ", toZip=" + toZip + ", vas_prod_cod=" + vas_prod_cod
+				+ ", source=" + source + ", destination=" + destination + ", booking_price=" + booking_price
+				+ ", item_weight=" + item_weight + ", booking_date_time=" + booking_date_time + ", booking_parcel_type="
+				+ booking_parcel_type + ", quantity=" + quantity + "]";
+	}
+	
+	
+}

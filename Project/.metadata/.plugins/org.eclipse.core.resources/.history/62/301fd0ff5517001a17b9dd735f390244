@@ -1,0 +1,37 @@
+package com.cpd.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "DTDCCUSTOMER")
+public class DtdcCustomer {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_sequence")
+	@SequenceGenerator(name = "customer_sequence", sequenceName = "CUSTOMER_SEQUENCE", allocationSize = 1)
+	@Column(name = "CUSTOME_ID")
+
+	private int customeId;
+
+	private String name;
+
+	private long phone;
+
+	private String email;
+
+	@OneToOne(mappedBy = "dtdcCustomer")
+	private ShipmentBooking shipmentBooking;
+
+	@OneToMany(mappedBy = "customer")
+	private ShipingAddress shipingAddresses;
+
+	
+
+}

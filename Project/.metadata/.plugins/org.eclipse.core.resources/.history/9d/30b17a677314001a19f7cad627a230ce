@@ -1,0 +1,86 @@
+package com.cpd.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.cpd.command.LoginCommand;
+import com.cpd.exception.UserNotFoundException;
+import com.cpd.service.LoginService;
+import com.cpd.validator.LoginValidator;
+
+@Controller
+public class LoginController {
+
+	@Autowired
+	private LoginValidator LoginValidator;
+	
+	private LoginService service;
+	
+	
+	@GetMapping("/dtdc-login.htm")
+	public String goToLogin() {
+
+		return "dtdc-login";
+	}
+
+	@ModelAttribute("loginCommand")
+	public LoginCommand emptyLoginCommandObject() {
+
+		return new LoginCommand();
+	}
+
+	@PostMapping("/dtdc-login.htm")
+	public String doLogin(HttpSession session,@ModelAttribute("loginCommand") LoginCommand command, BindingResult errors) {
+		if (LoginValidator.supports(LoginCommand.class)) {
+
+			LoginValidator.validate(command, errors);
+
+		}
+		if (errors.hasErrors()) {
+
+			return "dtdc-login";
+		}
+		try {
+			
+			Integer userId=service.validateLogin(command);
+			session.setAttribute("userId", userId);
+			session.setAttribute("userName", command.getUserName());
+			session.setAttribute("password",command.getPassword());
+		}catch (UserNotFoundException e) {
+			errors.reject("userName",e.getMessage());
+			
+			return "dtdc-login";
+		}
+		
+		if (command.getUserType().equals("corporate")) {
+			return "corporate";
+		}
+		if (command.getUserType().equals("channel-pattner")) {
+			return "channel-pattner";
+		}
+		if (command.getUserType().equals("delivery-parttner")) {
+			return "delivery-parttner";
+		}
+		return "registration-success";
+	}
+	
+	@GetMapping("/logout.htm")
+	public String doLlogout(HttpSession session) {
+		
+		Integer userId=(Integer) session.getAttribute("userId");
+		String userNmae=(String) session.getAttribute("userName");
+		
+		System.out.println("userNmae "+userNmae);
+		session.invalidate();
+		
+		
+		
+		return "dtdc-login";
+	}
+}

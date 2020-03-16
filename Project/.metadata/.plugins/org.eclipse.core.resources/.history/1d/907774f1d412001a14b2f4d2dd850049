@@ -1,0 +1,51 @@
+package com.cpd.validator;
+
+import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+import com.cpd.command.RegistrationCommand;
+
+@Component
+public class RegistrationValidator implements Validator {
+
+	@Override
+	public boolean supports(Class<?> clazz) {
+		if (clazz.isAssignableFrom(RegistrationCommand.class))
+			return true;
+
+		return false;
+	}
+
+	@Override
+	public void validate(Object target, Errors errors) {
+		RegistrationCommand command = (RegistrationCommand) target;
+
+		if (command.getAddressLine1() == null || "".equals(command.getAddressLine1())
+				|| command.getAddressLine1().isEmpty()) {
+
+			errors.rejectValue("addressLine1", "registration.addressLine1");
+		}
+		if (command.getAddressLine2() == null || "".equals(command.getAddressLine2())
+				|| command.getAddressLine2().isEmpty()) {
+
+			errors.rejectValue("addressLine2", "registration.addressLine2");
+		}
+		if(command.getCity()==null || "".equals(command.getCity())||command.getCity().isEmpty()) {
+			
+			errors.rejectValue("city", "registration.city");
+		}
+		if(command.getState()==null || "" .equals(command.getState())||command.getState().isEmpty()) {
+			errors.rejectValue("state", "registration.state");
+		}
+		if(command.getCountry()==null || "" .equals(command.getCountry())||command.getCountry().isEmpty()) {
+			errors.rejectValue("country", "registration.country");
+		}
+		
+		if(command.getZip()<=10000 || command.getZip()>99999 ) {
+			errors.rejectValue("zip", "registration.zip");
+		}
+	}
+
+}

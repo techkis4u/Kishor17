@@ -1,0 +1,39 @@
+package com.cpd.deligate;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.cpd.command.ShipmentBookingCommand;
+import com.cpd.model.DtdcCustomer;
+import com.cpd.service.DtdcCustomerService;
+import com.cpd.service.ShipmentBookingService;
+import com.cpd.service.UserService;
+
+@Component
+public class DtdcBookingDeligate {
+
+	@Autowired
+	private UserService service;
+	@Autowired
+	private ShipmentBookingService bookingService;
+	
+	@Autowired
+	private DtdcCustomerService dtdcCustomerService;
+
+	public boolean doDtdcBooking(ShipmentBookingCommand bookingCommand){
+		
+		return true;
+	}
+	public DtdcCustomer extractDtdcCustomerFromShipmentBookingCommand(ShipmentBookingCommand bookingCommand) {
+		
+		DtdcCustomer  customer=new DtdcCustomer();
+		customer.setName(bookingCommand.getName());
+		customer.setPhone(bookingCommand.getPhone());
+		customer.setEmail(bookingCommand.getEmail());
+		
+		return customer;
+	
+	}
+	
+	
+}

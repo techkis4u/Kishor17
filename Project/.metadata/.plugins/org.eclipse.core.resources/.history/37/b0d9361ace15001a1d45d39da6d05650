@@ -1,0 +1,21 @@
+package com.cpd.command;
+
+import java.util.Date;
+
+public class ShipmentBookingCommand {
+	
+	private String name;
+	private String phone;
+	private String email;
+	private String address_line1;
+	private String address_line2;
+	private String city ;
+	private int zip ;
+	private String  vas_prod_cod;
+	private String  source;
+	private String  destination; 
+	private int booking_price ;
+	private float item_weight ;
+	private Date booking_date_time ; 
+	private int quantity ;
+}

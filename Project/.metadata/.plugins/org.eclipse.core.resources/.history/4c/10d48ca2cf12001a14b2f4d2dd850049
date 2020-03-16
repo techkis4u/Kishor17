@@ -1,0 +1,4 @@
+registration.addressLine1=addressLine1 should not be empty
+registration.addressLine2=addressLine2 should not be empty
+registration.city=city should not empty
+registration.state=state should not empty

@@ -1,0 +1,23 @@
+registration.addressLine1=addressLine1 should not be empty
+registration.addressLine2=addressLine2 should not be empty
+registration.city=city should not empty
+registration.state=state should not empty
+registration.country=country should not be empty
+registration.zip=Enter your 5 digit zip code
+registration.name=Name should not Empty
+registration.phone=mobile number should be start with 7
+registration.email=give validate email id like(xxxx@xxx.com)
+registration.userName=User Name should not Empty
+registration.password=password should not empty
+login.userName=username should not be empty
+login.userType=please choose one user type 
+login.invalid=User name and password is not valid, please Enter Correct information
+
+shiping.name=Name should not Empty
+shiping.phone=phone number should not be empty
+shiping.email=give validate email id like(xxxx@xxx.com)
+shiping.formaddressLine1=formaddressLine1 should not be empty
+shiping.formaddressLine2=formaddressLine2 should not be empty
+shiping.FromCity= city should not be empty
+shiping.FromState=state should not be empty
+shiping.FromCountry=Country should not be empty

@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Login</h1>
+
+	<div>
+
+		<h3>Email:</h3>
+		<form:input path="emailid" placeholder="Emailid" />
+		<br>
+		<h3>Password:</h3>
+		<form:input path="password" placeholder="Password" />
+		<br> <input type="submit" value="Login" class="login-button" />
+		<br> <a class="sign-up">Sign Up!</a> <br>
+		<h6 class="no-access">Can't access your account?</h6>
+	</div>
+
+</body>
+</html>

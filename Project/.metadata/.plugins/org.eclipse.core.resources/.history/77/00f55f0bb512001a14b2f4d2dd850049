@@ -1,0 +1,30 @@
+package com.cpd.validator;
+
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+import com.cpd.command.RegistrationCommand;
+
+public class RegistrationValidator  implements Validator{
+
+	@Override
+	public boolean supports(Class<?> clazz) {
+		if(clazz.isAssignableFrom(RegistrationCommand.class))
+			return true;
+		
+		return false;
+	}
+
+	@Override
+	public void validate(Object target, Errors errors) {
+RegistrationCommand command=(RegistrationCommand)target;
+		
+		if(command.getAddressLine1()== null || "".equals(command.getAddressLine1()) || command.getAddressLine1().isEmpty()) {
+			
+			//errors.reject("registration.addressLine1", "addressLine1 should not empty");
+			errors.rejectValue("addressLine1", "registration.addressLine1");
+		}
+	}
+
+	
+}

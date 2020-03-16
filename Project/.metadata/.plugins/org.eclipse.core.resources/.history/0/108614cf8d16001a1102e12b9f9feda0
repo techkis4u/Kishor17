@@ -1,0 +1,21 @@
+package com.cpd.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "SHIPING_CUSTMOR")
+public class ShipingCustmor {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int s_c_id;
+	private String name;
+	private String phone;
+	private String email;
+	
+	
+	
+}

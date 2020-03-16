@@ -1,0 +1,39 @@
+package com.cpd.model;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "SHIPMING_ADDRESS")
+public class ShipingAddress {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int s_a_id;
+	private String fromAddressLine1;
+	private String fromAddressLine2;
+	private String fromCity ;
+	private String fromState;
+	private String fromCountry;
+	private int fromZip ;
+	private String toAddressLine1;
+	private String toAddressLine2;
+	private String toCity ;
+	private String toState;
+	private String toCountry;
+	private int toZip ;
+	private String type;
+	
+	@ManyToOne
+	private ShipmentBooking booking;
+
+
+	
+	
+}

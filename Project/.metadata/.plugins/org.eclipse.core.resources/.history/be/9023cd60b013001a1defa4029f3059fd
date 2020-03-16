@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page isELIgnored="false"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form:form modelAttribute="dtdclogin">
+		<h1>Login</h1>
+
+		<div id="login-info-div">
+			<table>
+				<tr>
+					<td>user name</td>
+					<td><form:input path="userName"/></td>
+				</tr>
+				<tr>
+					<td>password</td>
+					<td><form:input path="password" type="password"/></td>
+				</tr>
+				<tr>
+					<td>confirm password</td>
+					<td><input type="password" name="confirmPassword"></td>
+				</tr>
+				<tr>
+					<td>user type</td>
+					<td>
+					<form:select path="userType">
+						<form:option value="">select</form:option>
+						<form:option value="corporate">corporate</form:option>
+						<form:option value="channel-pattner">channel-pattner</form:option>
+						<form:option value="delivery-pattner">delivery-pattner</form:option>
+					</form:select>	
+					</td>
+				</tr>
+			</table>
+		</div>
+		<form:input type="submit" value="click"/>
+	</form:form>
+</body>
+</html>

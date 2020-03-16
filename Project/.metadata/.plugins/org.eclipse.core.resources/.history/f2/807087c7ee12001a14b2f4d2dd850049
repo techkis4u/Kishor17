@@ -1,0 +1,70 @@
+package com.cpd.validator;
+
+import java.util.regex.Pattern;
+
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+import com.cpd.command.RegistrationCommand;
+
+@Component
+public class RegistrationValidator implements Validator {
+
+	@Override
+	public boolean supports(Class<?> clazz) {
+		if (clazz.isAssignableFrom(RegistrationCommand.class))
+			return true;
+
+		return false;
+	}
+
+	@Override
+	public void validate(Object target, Errors errors) {
+		RegistrationCommand command = (RegistrationCommand) target;
+
+		if (command.getAddressLine1() == null || "".equals(command.getAddressLine1())
+				|| command.getAddressLine1().isEmpty()) {
+
+			errors.rejectValue("addressLine1", "registration.addressLine1");
+		}
+		if (command.getAddressLine2() == null || "".equals(command.getAddressLine2())
+				|| command.getAddressLine2().isEmpty()) {
+
+			errors.rejectValue("addressLine2", "registration.addressLine2");
+		}
+		if(command.getCity()==null || "".equals(command.getCity())||command.getCity().isEmpty()) {
+			
+			errors.rejectValue("city", "registration.city");
+		}
+		if(command.getState()==null || "" .equals(command.getState())||command.getState().isEmpty()) {
+			errors.rejectValue("state", "registration.state");
+		}
+		if(command.getCountry()==null || "" .equals(command.getCountry())||command.getCountry().isEmpty()) {
+			errors.rejectValue("country", "registration.country");
+		}
+		
+		if(command.getZip()<=10000 || command.getZip()>99999 ) {
+			errors.rejectValue("zip", "registration.zip");
+		}
+		if("".equals(command.getName())) {
+			errors.rejectValue("name", "registration.name");
+		}
+		if(command.getPhone()<=7777777777l ||command.getPhone()>=9999999999l) {
+			errors.rejectValue("phone", "registration.phone");
+		}
+		 
+		if (!command.getEmail() .contains("@")&& !command.getEmail().contains(".com")) {
+			errors.rejectValue("email", "registration.email");
+		}
+		if("".equals(command.getUserName())) {
+			errors.rejectValue("userName", "registration.userName");
+		}
+		if("".equals(command.getPassword())||command.getPassword()==null) {
+			errors.rejectValue("password", "registration.password");
+		}
+		
+		
+	}
+
+}

@@ -1,0 +1,16 @@
+package com.cpd.ajax;
+
+public class BookingPriceReponse {
+
+	private int booking_price;
+
+	public int getBooking_price() {
+		return booking_price;
+	}
+
+	public void setBooking_price(int booking_price) {
+		this.booking_price = booking_price;
+	}
+	
+	
+}

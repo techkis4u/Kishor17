@@ -1,0 +1,20 @@
+package com.cpd.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.cpd.service.ShipmentBookingService;
+
+@Controller
+public class ShipmentBookingController {
+
+	@Autowired
+	private ShipmentBookingService bookingService;
+	
+	@RequestMapping("/shipment-booking")
+	public String booking() {
+		return "shipmentbooking";
+	}
+	
+}

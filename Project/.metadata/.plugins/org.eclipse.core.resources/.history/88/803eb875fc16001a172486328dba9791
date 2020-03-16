@@ -1,0 +1,26 @@
+package com.cpd.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cpd.model.ShipmentBooking;
+import com.cpd.repo.ShipmentBookingRepository;
+
+@Service
+public class ShipmentBookingService {
+
+	@Autowired
+	private ShipmentBookingRepository shipmentBookingRepository;
+
+	public void doBookingShipment(ShipmentBooking booking) {
+		shipmentBookingRepository.save(booking);
+	}
+
+	public Integer getPriceBySourceAndDestination(String source, String destination) {
+
+		return shipmentBookingRepository.findPrice(source, destination);
+
+	}
+	
+	
+}

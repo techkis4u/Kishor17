@@ -1,0 +1,11 @@
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="org.springframework.jdbc.datasource.AbstractDriverBasedDataSource"><rhs name\="org.springframework.jdbc.datasource.DriverManagerDataSource"/></lhs><lhs name\="org.springframework.jdbc.datasource.AbstractDataSource"><rhs name\="org.springframework.jdbc.datasource.DriverManagerDataSource"/></lhs><lhs name\="javax.sql.DataSource"><rhs name\="org.springframework.jdbc.datasource.DriverManagerDataSource"/></lhs><lhs name\="javax.sql.CommonDataSource"><rhs name\="org.springframework.jdbc.datasource.DriverManagerDataSource"/></lhs><lhs name\="java.sql.Wrapper"><rhs name\="org.springframework.jdbc.datasource.DriverManagerDataSource"/></lhs><lhs name\="org.springframework.jdbc.datasource.DriverManagerDataSource"><rhs name\="org.springframework.jdbc.datasource.DriverManagerDataSource"/></lhs><lhs name\="com.cpd.model.User"><rhs name\="com.cpd.model.User"/></lhs><lhs name\="com.cpd.model.Address"><rhs name\="com.cpd.model.Address"/></lhs><lhs name\="org.hibernate.type.Type"><rhs name\="org.hibernate.type.LongType"/></lhs><lhs name\="com.cpd.command.ShipmentBookingCommand"><rhs name\="com.cpd.command.ShipmentBookingCommand"/></lhs><lhs name\="com.cpd.ajax.BookingPriceReponse"><rhs name\="com.cpd.ajax.BookingPriceReponse"/></lhs><lhs name\="org.springframework.http.HttpEntity"><rhs name\="org.springframework.http.ResponseEntity"/></lhs><lhs name\="org.springframework.http.ResponseEntity"><rhs name\="org.springframework.http.ResponseEntity"/></lhs><lhs name\="com.cpd.model.DtdcCustomer"><rhs name\="com.cpd.model.DtdcCustomer"/></lhs><lhs name\="com.cpd.model.ShipmentBooking"><rhs name\="com.cpd.model.ShipmentBooking"/></lhs></history>
+content_assist_number_of_computers=16
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+markOccurrences=false
+org.eclipse.jdt.ui.formatterprofiles.version=17
+sourceHoverBackgroundColor=255,255,225
+spelling_locale_initialized=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

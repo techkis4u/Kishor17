@@ -1,0 +1,7 @@
+package com.cpd.repo;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface ShipingAddressRepository extends CrudRepository<ShipingAddress,Integer > {
+
+}

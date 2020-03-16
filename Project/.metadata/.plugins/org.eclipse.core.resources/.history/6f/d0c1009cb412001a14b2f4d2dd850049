@@ -1,0 +1,5 @@
+package com.cpd.command;
+
+public class RegistrationCommand {
+
+}
